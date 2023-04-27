@@ -2,7 +2,7 @@
 const express = require('express');
 const cors = require('cors');
 const pool = require('./db.js');
-const { getAllJobs, createJob } = require('./controllers/job_controller.js');
+const { getAllJobs, createJob, updateJob, deleteJob } = require('./controllers/job_controller.js');
 
 const app = express();
 app.use(express.json());
@@ -12,6 +12,8 @@ const port = 3001;
 // routes
 app.get('/', getAllJobs);
 app.post('/create-job', createJob);
+app.put('/update-job', updateJob);
+app.delete('/delete-job', deleteJob);
 
 // Start local server
 app.listen(port, () => {
