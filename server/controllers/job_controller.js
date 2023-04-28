@@ -15,9 +15,9 @@ const getJobs = async (req, res) => {
 
 /* CREATE */
 const createJob = async (req, res) => {
-  const { mfr, type_name, type_id, style_name, style_id, color_num, color_name, size } = req.body;
-  const queryText = 'INSERT INTO jobs(mfr, type_name, type_id, style_name, style_id, color_num, color_name, size) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)';
-  const queryValues = [mfr, type_name, type_id, style_name, style_id, color_num, color_name, size];
+  const { mfr_record_id, type_record_id, style_record_id, color_record_id, size_record_id } = req.body;
+  const queryText = 'INSERT INTO jobs(mfr_record_id, type_record_id, style_record_id, color_record_id, size_record_id) VALUES ($1, $2, $3, $4, $5)';
+  const queryValues = [mfr_record_id, type_record_id, style_record_id, color_record_id, size_record_id];
 
   pool.query(queryText, queryValues)
   .then((data) => {

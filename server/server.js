@@ -14,7 +14,8 @@ app.use(express.json());
 app.use(cors());
 const port = 3001;
 
-// routes
+/* ROUTES */
+// GET
 app.get('/jobs', getJobs);
 app.get('/mfr', getMfr);
 app.get('/type', getType);
@@ -22,7 +23,9 @@ app.get('/style', getStyle);
 app.get('/color', getColor);
 app.get('/size', getSize);
 
-// app.post('/create-job', createJob);
+// POST
+app.post('/create-job', createJob);
+
 // app.put('/update-job', updateJob);
 // app.delete('/delete-job', deleteJob);
 
