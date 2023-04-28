@@ -1,21 +1,16 @@
 <template>
-  <JobsTable :jobs="jobs"/>
+  <nav>
+    <router-link to="/">Jobs</router-link> |
+    <router-link to="/create-job">Add job</router-link>
+  </nav>
 
-  <CreateJobForm :all-mfr="mfr" :all-type="type" :all-style="style" :all-color="color" :all-size="size"/>
+  <router-view :jobs="jobs" :all-mfr="mfr" :all-type="type" :all-style="style" :all-color="color" :all-size="size"/>
 
 </template>
 
 <script>
-import JobsTable from './components/JobsTable.vue';
-import CreateJobForm from './components/CreateJobForm.vue';
-
-export default {
+  export default {
   name: 'App',
-
-  components: {
-    JobsTable,
-    CreateJobForm
-  },
 
   data() {
     return {
