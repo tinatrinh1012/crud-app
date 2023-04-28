@@ -1,7 +1,7 @@
 const pool = require('../db.js');
 
 /* READ */
-const getAllJobs = async (req, res) => {
+const getJobs = async (req, res) => {
   pool.query('SELECT * FROM jobs')
   .then((data) => {
     const jobsData = data.rows;
@@ -11,6 +11,7 @@ const getAllJobs = async (req, res) => {
     res.status(404).json({ message: err.message });
   })
 }
+
 
 /* CREATE */
 const createJob = async (req, res) => {
@@ -67,4 +68,4 @@ const deleteJob = async (req, res) => {
   })
 }
 
-module.exports = { getAllJobs, createJob, updateJob, deleteJob };
+module.exports = { getJobs, createJob, updateJob, deleteJob };
