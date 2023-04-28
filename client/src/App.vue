@@ -1,48 +1,31 @@
 <template>
+  <JobsTable :jobs="jobs"/>
 
-  <table>
-    <tr>
-      <th>ID</th>
-      <th>Manufactuer</th>
-      <th>Type Name</th>
-      <th>Type ID</th>
-      <th>Style Name</th>
-      <th>Style ID</th>
-      <th>Color #</th>
-      <th>Color Name</th>
-      <th>Size</th>
-    </tr>
-    <tr v-for="job in jobs" :key="job.id">
-      <td>{{ job.id }}</td>
-      <td>{{ mfr[job.mfr_record_id] }}</td>
-      <td>{{ type[job.type_record_id]["type_name"] }}</td>
-      <td>{{ type[job.type_record_id]["type_id"] }}</td>
-      <td>{{ style[job.style_record_id]["style_name"] }}</td>
-      <td>{{ style[job.style_record_id]["style_id"] }}</td>
-      <td>{{ color[job.color_record_id]["color_num"] }}</td>
-      <td>{{ color[job.color_record_id]["color_name"] }}</td>
-      <td>{{ size[job.size_record_id] }}</td>
-    </tr>
-  </table>
+  <CreateJobForm :all-mfr="mfr" :all-type="type" :all-style="style" :all-color="color" :all-size="size"/>
 
 </template>
 
 <script>
+import JobsTable from './components/JobsTable.vue';
+import CreateJobForm from './components/CreateJobForm.vue';
+
 export default {
   name: 'App',
+
+  components: {
+    JobsTable,
+    CreateJobForm
+  },
 
   data() {
     return {
       jobs: [],
-      mfr: {},
-      type: {},
-      style: {},
-      color: {},
-      size: {}
+      mfr: [],
+      type: [],
+      style: [],
+      color: [],
+      size: []
     }
-  },
-
-  components: {
   },
 
   async created() {
@@ -93,7 +76,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>

@@ -2,7 +2,15 @@ const pool = require('../db.js');
 
 /* READ */
 const getJobs = async (req, res) => {
-  pool.query('SELECT * FROM jobs')
+  pool.query(`
+    SELECT jobs.*, mfr_name, type_name, type_id, style_name, style_id, color_num, color_name, size
+    FROM jobs
+    LEFT JOIN mfr ON jobs.mfr_record_id = mfr.id
+    LEFT JOIN type ON jobs.type_record_id = type.id
+    LEFT JOIN style ON jobs.style_record_id = style.id
+    LEFT JOIN color ON jobs.color_record_id = color.id
+    LEFT JOIN size ON jobs.size_record_id = size.id;
+  `)
   .then((data) => {
     const jobsData = data.rows;
     res.status(200).type('json').send(jobsData);
