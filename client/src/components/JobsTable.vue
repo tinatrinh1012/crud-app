@@ -2,6 +2,7 @@
   <h1>Jobs Table</h1>
   <table>
     <tr>
+      <th>ID</th>
       <th>Manufactuer</th>
       <th>Type Name</th>
       <th>Type ID</th>
@@ -10,8 +11,10 @@
       <th>Color #</th>
       <th>Color Name</th>
       <th>Size</th>
+      <th></th>
     </tr>
     <tr v-for="job in jobs" :key="job.id">
+      <td>{{ job.id }}</td>
       <td>{{ job.mfr_name }}</td>
       <td>{{ job.type_name }}</td>
       <td>{{ job.type_id }}</td>
@@ -20,6 +23,7 @@
       <td>{{ job.color_num }}</td>
       <td>{{ job.color_name }}</td>
       <td>{{ job.size }}</td>
+      <td><router-link :to="`/update-job/${job.id}`">Edit</router-link></td>
     </tr>
   </table>
 </template>

@@ -2,7 +2,7 @@
 const express = require('express');
 const cors = require('cors');
 const pool = require('./db.js');
-const { getJobs, createJob, updateJob, deleteJob } = require('./controllers/job_controller.js');
+const { getJobs, getJobById, createJob, updateJob, deleteJob } = require('./controllers/job_controller.js');
 const getMfr = require('./controllers/mfr_controller.js');
 const getType = require('./controllers/type_controller.js');
 const getStyle = require('./controllers/style_controller.js');
@@ -17,6 +17,7 @@ const port = 3001;
 /* ROUTES */
 // GET
 app.get('/jobs', getJobs);
+app.get('/job/:jobId', getJobById);
 app.get('/mfr', getMfr);
 app.get('/type', getType);
 app.get('/style', getStyle);
@@ -26,7 +27,7 @@ app.get('/size', getSize);
 // POST
 app.post('/create-job', createJob);
 
-// app.put('/update-job', updateJob);
+app.put('/update-job/:jobId', updateJob);
 // app.delete('/delete-job', deleteJob);
 
 // Start local server

@@ -20,6 +20,30 @@ const getJobs = async (req, res) => {
   })
 }
 
+const getJobById = async (req, res) => {
+  const queryText = `
+    SELECT jobs.*, mfr_name, type_name, type_id, style_name, style_id, color_num, color_name, size
+    FROM jobs
+    LEFT JOIN mfr ON jobs.mfr_record_id = mfr.id
+    LEFT JOIN type ON jobs.type_record_id = type.id
+    LEFT JOIN style ON jobs.style_record_id = style.id
+    LEFT JOIN color ON jobs.color_record_id = color.id
+    LEFT JOIN size ON jobs.size_record_id = size.id
+    WHERE jobs.id = $1
+  `;
+  const { jobId } = req.params;
+  const queryValues = [ jobId ];
+
+  pool.query(queryText, queryValues)
+  .then((data) => {
+    const jobData = data.rows;
+    res.status(200).type('json').send(jobData);
+  })
+  .catch((err) => {
+    res.status(404).json({ message: err.message });
+  })
+}
+
 
 /* CREATE */
 const createJob = async (req, res) => {
@@ -38,19 +62,17 @@ const createJob = async (req, res) => {
 
 /* UPDATE */
 const updateJob = async (req, res) => {
-  const { job_id, mfr, type_name, type_id, style_name, style_id, color_num, color_name, size } = req.body;
   const queryText = `UPDATE jobs
-    SET mfr = $2,
-    type_name = $3,
-    type_id = $4,
-    style_name = $5,
-    style_id = $6,
-    color_num = $7,
-    color_name = $8,
-    size = $9
-    WHERE job_id = $1
+    SET mfr_record_id = $1,
+    type_record_id = $2,
+    style_record_id = $3,
+    color_record_id = $4,
+    size_record_id = $5
+    WHERE jobs.id = $6
   `;
-  const queryValues = [job_id, mfr, type_name, type_id, style_name, style_id, color_num, color_name, size];
+  const { jobId } = req.params;
+  const { mfr_record_id, type_record_id, style_record_id, color_record_id, size_record_id } = req.body;
+  const queryValues = [ mfr_record_id, type_record_id, style_record_id, color_record_id, size_record_id, jobId ];
 
   pool.query(queryText, queryValues)
   .then((data) => {
@@ -76,4 +98,4 @@ const deleteJob = async (req, res) => {
   })
 }
 
-module.exports = { getJobs, createJob, updateJob, deleteJob };
+module.exports = { getJobs, getJobById, createJob, updateJob, deleteJob };

@@ -59,7 +59,6 @@ export default {
 
   methods: {
     async addJobHandler() {
-      console.log("add job handler")
       let response = await fetch("http://localhost:3001/create-job", {
         method: "POST",
         body: JSON.stringify({
