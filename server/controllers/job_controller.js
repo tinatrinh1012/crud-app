@@ -85,9 +85,9 @@ const updateJob = async (req, res) => {
 
 /* DELETE */
 const deleteJob = async (req, res) => {
-  const { job_id } = req.body;
-  const queryText = `DELETE FROM jobs WHERE job_id = $1`;
-  const queryValues = [job_id];
+  const { jobId } = req.params;
+  const queryText = `DELETE FROM jobs WHERE id = $1`;
+  const queryValues = [ jobId ];
 
   pool.query(queryText, queryValues)
   .then((data) => {

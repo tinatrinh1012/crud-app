@@ -27,8 +27,11 @@ app.get('/size', getSize);
 // POST
 app.post('/create-job', createJob);
 
+// PUT
 app.put('/update-job/:jobId', updateJob);
-// app.delete('/delete-job', deleteJob);
+
+// DELETE
+app.delete('/delete-job/:jobId', deleteJob);
 
 // Start local server
 app.listen(port, () => {
