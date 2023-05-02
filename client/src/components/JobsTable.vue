@@ -34,7 +34,8 @@ export default {
   name: 'JobsTable',
 
   props: {
-    jobs: Array
+    jobs: Array,
+    fetchJobs: Function
   },
 
   methods: {
@@ -49,6 +50,9 @@ export default {
         response = await response.json();
 
         if (response.message === "success") {
+          const updatedJobs = await this.fetchJobs();
+          this.$emit('updatedJobs', updatedJobs);
+
           window.alert(`Delete job (ID: ${jobId}) successfully`);
         } else {
           window.alert("Error: " + response.message);

@@ -4,7 +4,16 @@
     <router-link to="/create-job">Add job</router-link>
   </nav>
 
-  <router-view :jobs="jobs" :all-mfr="mfr" :all-type="type" :all-style="style" :all-color="color" :all-size="size"/>
+  <router-view
+    :jobs="jobs"
+    :all-mfr="mfr"
+    :all-type="type"
+    :all-style="style"
+    :all-color="color"
+    :all-size="size"
+    :fetch-jobs="fetchJobs"
+    @updated-jobs="(updatedJobs) => jobs = updatedJobs"
+  />
 
 </template>
 

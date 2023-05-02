@@ -31,7 +31,9 @@
       <option v-for="size in allSize" :key="size.id" :value="size.id">{{ size.size }}</option>
     </select>
 
-    <button type="submit" @click.prevent="addJobHandler">Add New Job</button>
+    <div>
+      <button type="submit" @click.prevent="addJobHandler">Add New Job</button>
+    </div>
   </form>
 </template>
 
@@ -44,7 +46,8 @@ export default {
     allType: Array,
     allStyle: Array,
     allColor: Array,
-    allSize: Array
+    allSize: Array,
+    fetchJobs: Function
   },
 
   data() {
@@ -75,6 +78,9 @@ export default {
       response = await response.json();
 
       if (response.message === "success") {
+        const updatedJobs = await this.fetchJobs();
+        this.$emit('updatedJobs', updatedJobs);
+
         window.alert("Create new job successfully");
       } else {
         window.alert("Error: " + response.message);
