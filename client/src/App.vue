@@ -1,5 +1,6 @@
 <template>
   <nav>
+    <!-- <a href="/">Jobs Home</a> -->
     <router-link to="/">Jobs</router-link> |
     <router-link to="/create-job">Add job</router-link>
   </nav>
@@ -12,7 +13,7 @@
     :all-color="color"
     :all-size="size"
     :fetch-jobs="fetchJobs"
-    @updated-jobs="(updatedJobs) => jobs = updatedJobs"
+    @updated-jobs="handleJobsUpdate"
   />
 
 </template>
@@ -76,6 +77,10 @@
       const response = await fetch("http://localhost:3001/size");
       const sizeData = await response.json();
       return sizeData;
+    },
+
+    handleJobsUpdate(updatedJobs) {
+      this.jobs = updatedJobs;
     }
   }
 }

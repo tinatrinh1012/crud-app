@@ -20,27 +20,6 @@ const getJobs = async (req, res) => {
   })
 }
 
-const getJobsWithFilter = async (req, res) => {
-  // get query param data
-  // add condition matching query info to query text
-  pool.query(`
-    SELECT jobs.*, mfr_name, type_name, type_id, style_name, style_id, color_num, color_name, size
-    FROM jobs
-    LEFT JOIN mfr ON jobs.mfr_record_id = mfr.id
-    LEFT JOIN type ON jobs.type_record_id = type.id
-    LEFT JOIN style ON jobs.style_record_id = style.id
-    LEFT JOIN color ON jobs.color_record_id = color.id
-    LEFT JOIN size ON jobs.size_record_id = size.id;
-  `)
-  .then((data) => {
-    const jobsData = data.rows;
-    res.status(200).type('json').send(jobsData);
-  })
-  .catch((err) => {
-    res.status(404).json({ message: err.message });
-  })
-}
-
 const getJobById = async (req, res) => {
   const queryText = `
     SELECT jobs.*, mfr_name, type_name, type_id, style_name, style_id, color_num, color_name, size
