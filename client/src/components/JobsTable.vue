@@ -13,7 +13,7 @@
       <th>Size</th>
       <th></th>
     </tr>
-    <tr v-for="job in jobs" :key="job.id">
+    <tr v-for="job in filteredJobs" :key="job.id">
       <td>{{ job.id }}</td>
       <td>{{ job.mfr_name }}</td>
       <td>{{ job.type_name }}</td>
@@ -35,6 +35,7 @@ export default {
 
   props: {
     jobs: Array,
+    filteredJobs: Array,
     fetchJobs: Function
   },
 
@@ -50,9 +51,7 @@ export default {
         response = await response.json();
 
         if (response.message === "success") {
-          const updatedJobs = await this.fetchJobs();
-          this.$emit('updatedJobs', updatedJobs);
-
+          this.$emit('deleteJob', jobId);
           window.alert(`Delete job (ID: ${jobId}) successfully`);
         } else {
           window.alert("Error: " + response.message);

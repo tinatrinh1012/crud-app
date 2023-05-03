@@ -1,19 +1,22 @@
 <template>
   <nav>
-    <!-- <a href="/">Jobs Home</a> -->
-    <router-link to="/">Jobs</router-link> |
+    <a href="/">Jobs Home</a> |
+    <!-- <router-link to="/">Jobs</router-link> | -->
     <router-link to="/create-job">Add job</router-link>
   </nav>
 
   <router-view
     :jobs="jobs"
+    :filtered-jobs="filteredJobs"
     :all-mfr="mfr"
     :all-type="type"
     :all-style="style"
     :all-color="color"
     :all-size="size"
     :fetch-jobs="fetchJobs"
-    @updated-jobs="handleJobsUpdate"
+    @filter="handleJobsFilter"
+    @delete-job="jobId => handleJobDelete(jobId)"
+
   />
 
 </template>
@@ -29,7 +32,8 @@
       type: [],
       style: [],
       color: [],
-      size: []
+      size: [],
+      filteredJobs: []
     }
   },
 
@@ -40,6 +44,7 @@
     this.style = await this.fetchStyle();
     this.color = await this.fetchColor();
     this.size = await this.fetchSize();
+    this.filteredJobs = [...this.jobs];
   },
 
   methods: {
@@ -79,8 +84,13 @@
       return sizeData;
     },
 
-    handleJobsUpdate(updatedJobs) {
-      this.jobs = updatedJobs;
+    handleJobsFilter(filteredJobs) {
+      this.filteredJobs = filteredJobs;
+    },
+
+    handleJobDelete(deletedJobId) {
+      this.jobs = this.jobs.filter((job) => job.id !== deletedJobId);
+      this.filteredJobs = [...this.jobs];
     }
   }
 }

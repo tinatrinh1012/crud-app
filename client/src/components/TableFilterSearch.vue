@@ -2,6 +2,8 @@
   <h2>Filters</h2>
 
   <form>
+    <input type="text" placeholder="Search jobs" v-model="searchValue">
+
     <div>Manufacturer:</div>
     <select v-model="filterMfrId">
       <option :value="null">All</option>
@@ -41,7 +43,7 @@
 
 <script>
 export default {
-  name: 'JobsTableFilter',
+  name: 'TableFilterSearch',
 
   props: {
     jobs: Array,
@@ -49,12 +51,12 @@ export default {
     allType: Array,
     allStyle: Array,
     allColor: Array,
-    allSize: Array,
-    fetchJobs: Function
+    allSize: Array
   },
 
   data() {
     return {
+      searchValue: "",
       filterMfrId: null,
       filterTypeId: null,
       filterStyleId: null,
@@ -63,27 +65,33 @@ export default {
     }
   },
 
+  watch: {
+    searchValue() {
+
+    }
+  },
+
   methods: {
     async filterJobsHandler() {
-      let updatedJobs = await this.fetchJobs();
+      let filteredJobs = this.jobs;
 
       if (this.filterMfrId !== null) {
-        updatedJobs = updatedJobs.filter(job => job.mfr_record_id === this.filterMfrId);
+        filteredJobs = filteredJobs.filter(job => job.mfr_record_id === this.filterMfrId);
       }
       if (this.filterTypeId !== null) {
-        updatedJobs = updatedJobs.filter(job => job.type_record_id === this.filterTypeId);
+        filteredJobs = filteredJobs.filter(job => job.type_record_id === this.filterTypeId);
       }
       if (this.filterStyleId !== null) {
-        updatedJobs = updatedJobs.filter(job => job.style_record_id === this.filterStyleId);
+        filteredJobs = filteredJobs.filter(job => job.style_record_id === this.filterStyleId);
       }
       if (this.filterColorId !== null) {
-        updatedJobs = updatedJobs.filter(job => job.color_record_id === this.filterColorId);
+        filteredJobs = filteredJobs.filter(job => job.color_record_id === this.filterColorId);
       }
       if (this.filterSizeId !== null) {
-        updatedJobs = updatedJobs.filter(job => job.size_record_id === this.filterSizeId);
+        filteredJobs = filteredJobs.filter(job => job.size_record_id === this.filterSizeId);
       }
 
-      this.$emit('updatedJobs', updatedJobs);
+      this.$emit('filter', filteredJobs);
     },
 
     clearFilter() {
@@ -92,6 +100,7 @@ export default {
       this.filterStyleId = null;
       this.filterColorId = null;
       this.filterSizeId = null;
+      this.$emit('filter', this.jobs);
     }
   }
 }

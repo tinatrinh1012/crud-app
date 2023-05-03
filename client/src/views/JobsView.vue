@@ -1,5 +1,5 @@
 <template>
-  <JobsTableFilter
+  <TableFilterSearch
     :jobs="jobs"
     :all-mfr="allMfr"
     :all-type="allType"
@@ -7,24 +7,26 @@
     :all-color="allColor"
     :all-size="allSize"
     :fetch-jobs="fetchJobs"
-    @updated-jobs="updatedJobs => this.$emit('updatedJobs', updatedJobs)"
+    @filter="filteredJobs => this.$emit('filter', filteredJobs)"
   />
   <JobsTable
     :jobs="jobs"
+    :filtered-jobs="filteredJobs"
     :fetch-jobs="fetchJobs"
-    @updated-jobs="updatedJobs => this.$emit('updatedJobs', updatedJobs)"
+    @delete-job="jobId => this.$emit('deleteJob', jobId)"
   />
 </template>
 
 <script>
 import JobsTable from '../components/JobsTable.vue'
-import JobsTableFilter from '@/components/JobsTableFilter.vue';
+import TableFilterSearch from '@/components/TableFilterSearch.vue';
 
 export default {
   name: 'JobsView',
 
   props: {
     jobs: Array,
+    filteredJobs: Array,
     allMfr: Array,
     allType: Array,
     allStyle: Array,
@@ -35,7 +37,7 @@ export default {
 
   components: {
     JobsTable,
-    JobsTableFilter
+    TableFilterSearch
   }
 }
 </script>
