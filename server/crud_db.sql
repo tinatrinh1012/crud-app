@@ -61,11 +61,11 @@ ALTER SEQUENCE public.color_id_seq OWNED BY public.color.id;
 
 CREATE TABLE public.jobs (
     id integer NOT NULL,
-    mfr_record_id integer,
-    type_record_id integer,
-    style_record_id integer,
-    color_record_id integer,
-    size_record_id integer
+    mfr_record_id integer NOT NULL,
+    type_record_id integer NOT NULL,
+    style_record_id integer NOT NULL,
+    color_record_id integer NOT NULL,
+    size_record_id integer NOT NULL
 );
 
 
@@ -334,12 +334,12 @@ COPY public.size (id, size) FROM stdin;
 --
 
 COPY public.style (id, style_id, style_name) FROM stdin;
-1	n/a	Standard Excelon
-2	n/a	Classic Plank
 3	5T269	Convene
 4	SLC46	Ivy Hall
-5	n/a	Color Wheel
 6	\N	Aster Maximum Fiandra
+1	\N	Standard Excelon
+2	\N	Classic Plank
+5	\N	Color Wheel
 \.
 
 
@@ -358,14 +358,14 @@ COPY public.type (id, type_id, type_name) FROM stdin;
 -- Name: color_id_seq; Type: SEQUENCE SET; Schema: public; Owner: tinatrinh
 --
 
-SELECT pg_catalog.setval('public.color_id_seq', 7, true);
+SELECT pg_catalog.setval('public.color_id_seq', 8, true);
 
 
 --
 -- Name: jobs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: tinatrinh
 --
 
-SELECT pg_catalog.setval('public.jobs_id_seq', 7, true);
+SELECT pg_catalog.setval('public.jobs_id_seq', 38, true);
 
 
 --
@@ -402,6 +402,14 @@ SELECT pg_catalog.setval('public.type_id_seq', 3, true);
 
 ALTER TABLE ONLY public.color
     ADD CONSTRAINT color_color_name_key UNIQUE (color_name);
+
+
+--
+-- Name: color color_color_num_key; Type: CONSTRAINT; Schema: public; Owner: tinatrinh
+--
+
+ALTER TABLE ONLY public.color
+    ADD CONSTRAINT color_color_num_key UNIQUE (color_num);
 
 
 --
@@ -453,6 +461,14 @@ ALTER TABLE ONLY public.style
 
 
 --
+-- Name: style style_style_id_key; Type: CONSTRAINT; Schema: public; Owner: tinatrinh
+--
+
+ALTER TABLE ONLY public.style
+    ADD CONSTRAINT style_style_id_key UNIQUE (style_id);
+
+
+--
 -- Name: style style_style_name_key; Type: CONSTRAINT; Schema: public; Owner: tinatrinh
 --
 
@@ -466,6 +482,14 @@ ALTER TABLE ONLY public.style
 
 ALTER TABLE ONLY public.type
     ADD CONSTRAINT type_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: type type_type_id_key; Type: CONSTRAINT; Schema: public; Owner: tinatrinh
+--
+
+ALTER TABLE ONLY public.type
+    ADD CONSTRAINT type_type_id_key UNIQUE (type_id);
 
 
 --
