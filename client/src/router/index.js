@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import JobsView from '../views/JobsView.vue'
-import CreateJobForm from '../components/CreateJobForm.vue'
-import UpdateJobForm from '../components/UpdateJobForm.vue'
+import CreateJobView from '../views/CreateJobView.vue'
+import UpdateJobView from '../views/UpdateJobView.vue'
 
 const routes = [
   {
@@ -12,12 +12,12 @@ const routes = [
   {
     path: '/create-job',
     name: 'create-job',
-    component: CreateJobForm
+    component: CreateJobView
   },
   {
     path: '/update-job/:jobId',
     name: 'update-job',
-    component: UpdateJobForm
+    component: UpdateJobView
   }
 ]
 

@@ -57,8 +57,7 @@ export default {
     allType: Array,
     allStyle: Array,
     allColor: Array,
-    allSize: Array,
-    fetchJobs: Function
+    allSize: Array
   },
 
   data() {

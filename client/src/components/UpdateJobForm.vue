@@ -89,9 +89,6 @@
         response = await response.json();
 
         if (response.message === "success") {
-          const updatedJobs = await this.fetchJobs();
-          this.$emit('updatedJobs', updatedJobs);
-
           window.alert(`Update job (ID: ${jobId}) successfully`);
         } else {
           window.alert("Error: " + response.message);

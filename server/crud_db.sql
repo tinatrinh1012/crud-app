@@ -20,6 +20,9 @@ SET default_tablespace = '';
 
 SET default_table_access_method = heap;
 
+CREATE DATABASE crud_db;
+\c crud_db
+
 --
 -- Name: color; Type: TABLE; Schema: public; Owner: tinatrinh
 --
