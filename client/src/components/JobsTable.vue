@@ -36,10 +36,10 @@
 export default {
   name: 'JobsTable',
 
+  emits: ['deleteJob'],
+
   props: {
-    jobs: Array,
-    filteredJobs: Array,
-    fetchJobs: Function
+    filteredJobs: Array
   },
 
   methods: {

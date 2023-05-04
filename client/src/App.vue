@@ -15,7 +15,6 @@
       :all-style="style"
       :all-color="color"
       :all-size="size"
-      :fetch-jobs="fetchJobs"
       @filter="handleJobsFilter"
       @delete-job="jobId => handleJobDelete(jobId)"
     />

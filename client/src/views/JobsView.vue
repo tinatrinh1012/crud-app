@@ -6,13 +6,10 @@
     :all-style="allStyle"
     :all-color="allColor"
     :all-size="allSize"
-    :fetch-jobs="fetchJobs"
     @filter="filteredJobs => this.$emit('filter', filteredJobs)"
   />
   <JobsTable
-    :jobs="jobs"
     :filtered-jobs="filteredJobs"
-    :fetch-jobs="fetchJobs"
     @delete-job="jobId => this.$emit('deleteJob', jobId)"
   />
 </template>
@@ -24,6 +21,8 @@ import TableFilterSearch from '@/components/TableFilterSearch.vue';
 export default {
   name: 'JobsView',
 
+  emits: ['filter', 'deleteJob'],
+
   props: {
     jobs: Array,
     filteredJobs: Array,
@@ -31,8 +30,7 @@ export default {
     allType: Array,
     allStyle: Array,
     allColor: Array,
-    allSize: Array,
-    fetchJobs: Function
+    allSize: Array
   },
 
   components: {

@@ -68,6 +68,8 @@
 export default {
   name: 'TableFilterSearch',
 
+  emits: ['filter'],
+
   props: {
     jobs: Array,
     allMfr: Array,
