@@ -1,7 +1,7 @@
 const pool = require('../db.js');
 
 const getColor = async (req, res) => {
-  pool.query('SELECT * FROM color')
+  pool.query('SELECT * FROM color ORDER BY color_name')
   .then((data) => {
     res.status(200).type('json').send(data.rows);
   })

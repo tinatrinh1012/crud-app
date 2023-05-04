@@ -1,7 +1,7 @@
 const pool = require('../db.js');
 
 const getType = async (req, res) => {
-  pool.query('SELECT * FROM type')
+  pool.query('SELECT * FROM type ORDER BY type_name')
   .then((data) => {
     res.status(200).type('json').send(data.rows);
   })

@@ -1,7 +1,7 @@
 <template>
-  <h1>Jobs Table</h1>
-  <table>
-    <tr>
+  <h3>Jobs</h3>
+  <table class="hover">
+    <thead>
       <th>ID</th>
       <th>Manufactuer</th>
       <th>Type Name</th>
@@ -12,20 +12,23 @@
       <th>Color Name</th>
       <th>Size</th>
       <th></th>
-    </tr>
-    <tr v-for="job in filteredJobs" :key="job.id">
-      <td>{{ job.id }}</td>
-      <td>{{ job.mfr_name }}</td>
-      <td>{{ job.type_name }}</td>
-      <td>{{ job.type_id }}</td>
-      <td>{{ job.style_name }}</td>
-      <td>{{ job.style_id }}</td>
-      <td>{{ job.color_num }}</td>
-      <td>{{ job.color_name }}</td>
-      <td>{{ job.size }}</td>
-      <td><router-link :to="`/update-job/${job.id}`">Edit</router-link></td>
-      <td><button @click.prevent="deleteJobHandler(job.id)">Delete</button></td>
-    </tr>
+      <th></th>
+    </thead>
+    <tbody>
+      <tr v-for="job in filteredJobs" :key="job.id">
+        <td>{{ job.id }}</td>
+        <td>{{ job.mfr_name }}</td>
+        <td>{{ job.type_name }}</td>
+        <td>{{ job.type_id }}</td>
+        <td>{{ job.style_name }}</td>
+        <td>{{ job.style_id }}</td>
+        <td>{{ job.color_num }}</td>
+        <td>{{ job.color_name }}</td>
+        <td>{{ job.size }}</td>
+        <td><router-link :to="`/update-job/${job.id}`" class="button small">Edit</router-link></td>
+        <td><button @click.prevent="deleteJobHandler(job.id)" class="alert button small">Delete</button></td>
+      </tr>
+    </tbody>
   </table>
 </template>
 

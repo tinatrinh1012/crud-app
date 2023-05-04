@@ -1,7 +1,7 @@
 const pool = require('../db.js');
 
 const getMfr = async (req, res) => {
-  pool.query('SELECT * FROM mfr')
+  pool.query('SELECT * FROM mfr ORDER BY mfr_name')
   .then((data) => {
     res.status(200).type('json').send(data.rows);
   })

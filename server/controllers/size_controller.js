@@ -1,7 +1,7 @@
 const pool = require('../db.js');
 
 const getSize = async (req, res) => {
-  pool.query('SELECT * FROM size')
+  pool.query('SELECT * FROM size ORDER BY size')
   .then((data) => {
     res.status(200).type('json').send(data.rows);
   })

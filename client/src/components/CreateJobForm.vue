@@ -1,38 +1,49 @@
 <template>
-  <h1>Add Job</h1>
-  <form>
-    <div>Manufacturer:</div>
-    <select v-model="selectedMfrId">
-      <option disabled :value="null">Select Manufacturer</option>
-      <option v-for="mfr in allMfr" :key="mfr.id" :value="mfr.id">{{ mfr.mfr_name }}</option>
-    </select>
+  <h3>Add Job</h3>
+  <form id="create-job-form">
+    <div class="grid-x">
+      <div class="medium-6 cell">
+        <div>Manufacturer</div>
+        <select v-model="selectedMfrId">
+          <option disabled :value="null">Select Manufacturer</option>
+          <option v-for="mfr in allMfr" :key="mfr.id" :value="mfr.id">{{ mfr.mfr_name }}</option>
+        </select>
+      </div>
+      <div class="medium-6 cell">
+        <div>Type</div>
+        <select v-model="selectedTypeId">
+          <option disabled :value="null">Select Type</option>
+          <option v-for="typeOption in allType" :key="typeOption.id" :value="typeOption.id">{{ typeOption.type_name }}</option>
+        </select>
+      </div>
+    </div>
 
-    <div>Type:</div>
-    <select v-model="selectedTypeId">
-      <option disabled :value="null">Select Type</option>
-      <option v-for="typeOption in allType" :key="typeOption.id" :value="typeOption.id">{{ typeOption.type_name }}</option>
-    </select>
+    <div class="grid-x">
+      <div class="medium-4 cell">
+        <div>Style:</div>
+        <select v-model="selectedStyleId">
+          <option disabled :value="null">Select Style</option>
+          <option v-for="style in allStyle" :key="style.id" :value="style.id">{{ style.style_name }}</option>
+        </select>
+      </div>
+      <div class="medium-4 cell">
+        <div>Color:</div>
+        <select v-model="selectedColorId">
+          <option disabled :value="null">Select Color</option>
+          <option v-for="color in allColor" :key="color.id" :value="color.id">{{ color.color_name }}</option>
+        </select>
+      </div>
+      <div class="medium-4 cell">
+        <div>Size:</div>
+        <select v-model="selectedSizeId">
+          <option disabled :value="null">Select Size</option>
+          <option v-for="size in allSize" :key="size.id" :value="size.id">{{ size.size }}</option>
+        </select>
+      </div>
+    </div>
 
-    <div>Style:</div>
-    <select v-model="selectedStyleId">
-      <option disabled :value="null">Select Style</option>
-      <option v-for="style in allStyle" :key="style.id" :value="style.id">{{ style.style_name }}</option>
-    </select>
-
-    <div>Color:</div>
-    <select v-model="selectedColorId">
-      <option disabled :value="null">Select Color</option>
-      <option v-for="color in allColor" :key="color.id" :value="color.id">{{ color.color_name }}</option>
-    </select>
-
-    <div>Size:</div>
-    <select v-model="selectedSizeId">
-      <option disabled :value="null">Select Size</option>
-      <option v-for="size in allSize" :key="size.id" :value="size.id">{{ size.size }}</option>
-    </select>
-
-    <div>
-      <button type="submit" @click.prevent="addJobHandler">Add New Job</button>
+    <div class="grid-x">
+      <button class="button" type="submit" @click.prevent="addJobHandler">Add New Job</button>
     </div>
   </form>
 </template>
@@ -62,6 +73,7 @@ export default {
 
   methods: {
     async addJobHandler() {
+      // TODO: only create job if have all required field
       let response = await fetch("http://localhost:3001/create-job", {
         method: "POST",
         body: JSON.stringify({

@@ -9,7 +9,8 @@ const getJobs = async (req, res) => {
     LEFT JOIN type ON jobs.type_record_id = type.id
     LEFT JOIN style ON jobs.style_record_id = style.id
     LEFT JOIN color ON jobs.color_record_id = color.id
-    LEFT JOIN size ON jobs.size_record_id = size.id;
+    LEFT JOIN size ON jobs.size_record_id = size.id
+    ORDER BY jobs.id;
   `)
   .then((data) => {
     const jobsData = data.rows;

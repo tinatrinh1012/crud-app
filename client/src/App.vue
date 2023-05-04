@@ -1,23 +1,25 @@
 <template>
-  <nav>
-    <a href="/">Jobs Home</a> |
-    <!-- <router-link to="/">Jobs</router-link> | -->
-    <router-link to="/create-job">Add job</router-link>
-  </nav>
+  <div id="nav-bar" class="grid-container">
+    <nav>
+      <a href="/">Home</a> |
+      <router-link to="/create-job">Add job</router-link>
+    </nav>
+  </div>
 
-  <router-view
-    :jobs="jobs"
-    :filtered-jobs="filteredJobs"
-    :all-mfr="mfr"
-    :all-type="type"
-    :all-style="style"
-    :all-color="color"
-    :all-size="size"
-    :fetch-jobs="fetchJobs"
-    @filter="handleJobsFilter"
-    @delete-job="jobId => handleJobDelete(jobId)"
-
-  />
+  <div class="grid-container">
+    <router-view
+      :jobs="jobs"
+      :filtered-jobs="filteredJobs"
+      :all-mfr="mfr"
+      :all-type="type"
+      :all-style="style"
+      :all-color="color"
+      :all-size="size"
+      :fetch-jobs="fetchJobs"
+      @filter="handleJobsFilter"
+      @delete-job="jobId => handleJobDelete(jobId)"
+    />
+  </div>
 
 </template>
 
