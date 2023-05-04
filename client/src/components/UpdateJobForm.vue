@@ -27,7 +27,7 @@
     </select>
 
     <div>
-      <button type="submit" @click.prevent="updateJobHandler(job.id)">Update Job</button>
+      <button class="button" type="submit" @click.prevent="updateJobHandler(job.id)">Update Job</button>
     </div>
   </form>
 </template>

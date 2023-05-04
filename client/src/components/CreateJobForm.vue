@@ -20,21 +20,21 @@
 
     <div class="grid-x">
       <div class="medium-4 cell">
-        <div>Style:</div>
+        <div>Style</div>
         <select v-model="selectedStyleId">
           <option disabled :value="null">Select Style</option>
           <option v-for="style in allStyle" :key="style.id" :value="style.id">{{ style.style_name }}</option>
         </select>
       </div>
       <div class="medium-4 cell">
-        <div>Color:</div>
+        <div>Color</div>
         <select v-model="selectedColorId">
           <option disabled :value="null">Select Color</option>
           <option v-for="color in allColor" :key="color.id" :value="color.id">{{ color.color_name }}</option>
         </select>
       </div>
       <div class="medium-4 cell">
-        <div>Size:</div>
+        <div>Size</div>
         <select v-model="selectedSizeId">
           <option disabled :value="null">Select Size</option>
           <option v-for="size in allSize" :key="size.id" :value="size.id">{{ size.size }}</option>
@@ -73,7 +73,11 @@ export default {
 
   methods: {
     async addJobHandler() {
-      // TODO: only create job if have all required field
+      if (this.selectedMfrId == null || this.selectedTypeId == null || this.selectedStyleId == null || this.selectedColorId == null || this.selectedSizeId == null) {
+        window.alert("Please fill out all the fields.");
+        return;
+      }
+
       let response = await fetch("http://localhost:3001/create-job", {
         method: "POST",
         body: JSON.stringify({

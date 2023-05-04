@@ -1,6 +1,6 @@
 <template>
   <h3>Jobs</h3>
-  <table class="hover">
+  <table class="hover stack">
     <thead>
       <th>ID</th>
       <th>Manufactuer</th>
