@@ -9,6 +9,7 @@
     @filter="filteredJobs => this.$emit('filter', filteredJobs)"
   />
   <JobsTable
+    :jobs="jobs"
     :filtered-jobs="filteredJobs"
     @delete-job="jobId => this.$emit('deleteJob', jobId)"
   />

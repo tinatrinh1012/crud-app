@@ -30,6 +30,14 @@
       </tr>
     </tbody>
   </table>
+  <div v-if="jobs.length === 0" class="callout secondary">
+    <h5>No job record exists.</h5>
+    <a href="/create-job">Add job</a>
+  </div>
+  <div v-if="jobs.length > 0 && filteredJobs.length === 0" class="callout warning">
+    <h5>No job records available for selected filters.</h5>
+    <p>Clear filter and try again. </p>
+  </div>
 </template>
 
 <script>
@@ -39,6 +47,7 @@ export default {
   emits: ['deleteJob'],
 
   props: {
+    jobs: Array,
     filteredJobs: Array
   },
 

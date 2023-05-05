@@ -60,7 +60,7 @@
         <button type="submit" @click.prevent="filterHandler" class="button">Filter</button>
       </div>
       <div class="medium-2 cell">
-        <button type="submit" @click.prevent="clearFilter" class="button">Clear filter</button>
+        <button type="submit" @click.prevent="clearFilter" class="button secondary">Clear filter</button>
       </div>
     </div>
   </form>
