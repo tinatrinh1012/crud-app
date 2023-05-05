@@ -6,6 +6,7 @@ This project is a full-stack web app that connects with Postgres database of job
 - [Install and Run the Program](#install-and-run-the-program)
 - [Design Decision Overview](#design-decision-overview)
 - [Programming Languages and Technology Choice](#programming-languages-and-technology-choice)
+- [Process for verifying the correctness of the program](#process-for-verifying-the-correctness-of-the-program)
 
 ## Environment Setup
 
@@ -143,4 +144,26 @@ Frontend features include
 
 - Vue.js for front-end application because it's simple, easy to use, and I'm more familiar with Vue.js than React.js at the moment. Since I only had 2 weeks for the project, I wanted to use something I'm comfortable with and find ways to optimize instead of figuring out a new framework and not have time to optimize.
 
+- Foundation CSS framework for styling because they have an easy-to-use grid system that can dynamically adjust for different screen sizes. In addition, Foundation default styling is good enough for this sample app.
+
 - PostgreSQL for database simply because this is the only relational database management system that I've learned.
+
+
+## Process for verifying the correctness of the program
+
+- Test API endpoints by using Postman to make requests to the server application and verify expected response
+- Test connection with database by making API request that sends a query to database and verify that the database is updated correctly or sends back the right data as if we were to enter the same query in psql shell
+- Use Vue Devtools (browser devtools extension for Vue.js) to debug Vue.js app during development and verify that states are updated correctly
+- Use browser developer tools like console, network, and elements to debug full-stack application functionality and errors, such as verfiying what requests were made when a frontend event happens and response from server.
+
+- Functionality manual test
+
+    - Frontend app routing to different views
+    - Display jobs table properly
+    - Create a new job, which require all fields to be filled, and verify database update that should reflect on frontend data table
+    - Update an existing job information and verify results in database
+    - Delete a job and verify results in database
+    - Search records by job ID, style ID, and color number and verify display results
+    - Filter by manufacturer, type, style, color, and size and verify display results
+
+
