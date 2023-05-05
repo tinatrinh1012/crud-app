@@ -38,3 +38,4 @@ app.listen(port, () => {
     console.log(`Local server is running at http://localhost:${port}/`);
 });
 
+module.exports = app;
