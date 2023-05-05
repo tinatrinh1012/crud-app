@@ -5,6 +5,7 @@ This project is a full-stack web app that connects with Postgres database of job
 - [Environment Setup](#environment-setup)
 - [Install and Run the Program](#install-and-run-the-program)
 - [Design Decision Overview](#design-decision-overview)
+- [Programming Languages and Technology Choice](#programming-languages-and-technology-choice)
 
 ## Environment Setup
 
@@ -63,8 +64,11 @@ $ cd crud-app
 // navigate to server directory
 $ cd server
 
-// set up database
+// set up database for window OS
 $ psql -U postgres -f .\crud_db.sql
+
+// set up database for mac OS
+$ psql
 
 // install packages in server directory
 $ npm install
@@ -131,3 +135,12 @@ Frontend features include
 - Create new job form (all fields are required because a job record must reference an existing unique value in mfr, type, style, color, size tables)
 - Update job form by ID
 - Delete job button
+
+
+## Programming Languages and Technology Choice
+
+- Node.js for server-side application because it's simple, quick to set up, and easier to write. For this sample app, setting up a robost framework like Java is not efficient since Java code is pretty verbose and requires more time to set up.
+
+- Vue.js for front-end application because it's simple, easy to use, and I'm more familiar with Vue.js than React.js at the moment. Since I only had 2 weeks for the project, I wanted to use something I'm comfortable with and find ways to optimize instead of figuring out a new framework and not have time to optimize.
+
+- PostgreSQL for database simply because this is the only relational database management system that I've learned.
