@@ -180,4 +180,5 @@ Frontend features include
 - Ability to add new and unique value for `mfr`, `type`, `style`, `color`, and `size` when creating or updating a job record. Currently, the app only allow for creating or updating job record with existing value in `mfr`, `type`, `style`, `color`, and `size`
 - For more complex application, the query would be abstracted out in a separate layer from controller files
 - More appropriate error code return for different situation
+- Nice success, warning, and error message callout when creating, updating, or deleting job record
 - Add unit tests for reliability

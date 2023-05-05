@@ -1,5 +1,10 @@
 <template>
   <div id="nav-bar" class="grid-container">
+    <!--
+      When use <router-link>, a component is rendered at <router-view> based on route setup but the app doesn't necessarily reload, unless user reload their browser.
+      Use <a> tag for Home page to simplify jobs state management.
+      The app reload and fetch jobs data everytime user click Home link to access the jobs table, ensuring up-to-date jobs data.
+    -->
     <nav>
       <a href="/">Home</a> |
       <router-link to="/create-job">Add job</router-link>
