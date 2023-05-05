@@ -1,7 +1,5 @@
 # Full Stack Crud App (Vue.js, Node.js, and PostgreSQL) 
-
-## Description 
-This project ...
+This project is a full-stack web app that connects with Postgres database of jobs and displays table of data. In addition, the app can search, filter, create, update, and delete job record. 
 
 ## Table of Contents 
 - [Environment Setup](#environment-setup)
