@@ -25,7 +25,7 @@ $ npm --version
 
 Install PostgreSQL using [PostgreSQL packages and installer from EDB](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads). If you’re on a Mac, you can also choose to download and install [PostgresApp](https://postgresapp.com/) instead. I use PostgresApp because it was quick and easy to set up. 
 
-**PostgreSQL EDB installer**
+#### Using PostgreSQL EDB installer 
 
 Follow [installation instructions for your operating system](https://www.enterprisedb.com/docs/supported-open-source/postgresql/installer/02_installing_postgresql_with_the_graphical_installation_wizard/). 
 
@@ -35,15 +35,17 @@ Accept the default option for Installation Directory, Data Directory, Port (defa
 
 Set password to be “123456”. You can set a different password if you’d like, but you’ll need to change the password value in server/db.js. 
 
-******PostgresApp on MacOS******
+#### Using PostgresApp on MacOS 
 
 Follow [installation instructions for PostgresApp](https://postgresapp.com/). 
 
+#### Verify PostgreSQL Installation
+
 Verify if you have successfully installed PostgreSQL by running “psql -U postgres” in the terminal or command prompt, and it should take you to a psql shell. 
 
-Enter “\l” and you should see a list of databases. 
+Enter `\l` and you should see a list of databases. 
 
-Enter “\q” to quit psql shell. 
+Enter `\q` to quit psql shell. 
 
 Here’s an example of how it should look like in your terminal 
 
@@ -76,12 +78,12 @@ $ npm install
 
 ### Run the program 
 
-To start the server, navigate to server directory and run “node server.js” 
+To start the server, navigate to server directory and run `node server.js 
 
 <img width="818" alt="image" src="https://user-images.githubusercontent.com/68746212/236375318-7e2a32e3-4a75-4427-8253-dbd533927266.png">
 
 
-Open another terminal or command prompt, navigate to the client directory and run “npm run serve”
+Open another terminal or command prompt, navigate to the client directory and run `npm run serve`
 
 <img width="799" alt="image" src="https://user-images.githubusercontent.com/68746212/236375366-743d4a99-997d-44eb-9eee-a8c9400dba94.png">
 
