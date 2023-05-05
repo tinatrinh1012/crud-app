@@ -1,18 +1,27 @@
-**************Environment Setup************** 
+# Full Stack Crud App (Vue.js, Node.js, and PostgreSQL) 
+
+## Description 
+This project ...
+
+## Table of Contents 
+- [Environment Setup](#environment-setup)
+- [Install and Run the Program](#install-and-run-the-program)
+
+## Environment Setup 
 
 To run the program, you need Node.js, NPM (Node Package Manager), and PostgreSQL installed in your environment.   
 
-******************************Node.js and NPM******************************
+### Node.js and NPM 
 
 Install [Node.js](https://nodejs.org/en) if you don’t already have it installed. NPM will be included with Node.js installation. Verify if you have successfully installed Node.js and NPM by running the following command in your terminal or command prompt 
 
-```js
+```sh
 $ node --version
 
 $ npm --version
 ```
 
-**********************PostgreSQL********************** 
+### PostgreSQL 
 
 Install PostgreSQL using [PostgreSQL packages and installer from EDB](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads). If you’re on a Mac, you can also choose to download and install [PostgresApp](https://postgresapp.com/) instead. I use PostgresApp because it was quick and easy to set up. 
 
@@ -40,11 +49,11 @@ Here’s an example of how it should look like in your terminal
 
 <img width="819" alt="image" src="https://user-images.githubusercontent.com/68746212/236375231-9dfc728e-e6b4-4cd0-8a11-6534eeaf07ab.png">
 
-**********************Install and Run the program**********************
+## Install and Run the Program 
 
-************************Installation************************
+### Installation 
 
-```js
+```sh
 $ git clone https://github.com/tinatrinh1012/crud-app.git
 
 // navigate to project directory 
@@ -65,7 +74,7 @@ $ cd client
 $ npm install
 ```
 
-**Run the program**
+### Run the program 
 
 To start the server, navigate to server directory and run “node server.js” 
 
