@@ -2,6 +2,7 @@ const pool = require('../db.js');
 
 /* READ */
 const getJobs = async (req, res) => {
+  // put query in controller to keep it simple. For more complex application, this would be abstracted out in a separate layer.
   pool.query(`
     SELECT jobs.*, mfr_name, type_name, type_id, style_name, style_id, color_num, color_name, size
     FROM jobs
@@ -17,6 +18,7 @@ const getJobs = async (req, res) => {
     res.status(200).type('json').send(jobsData);
   })
   .catch((err) => {
+    // for the purpose of this sample app, return errors as 404
     res.status(404).json({ message: err.message });
   })
 }

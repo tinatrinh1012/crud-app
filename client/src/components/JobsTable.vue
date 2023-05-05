@@ -3,7 +3,7 @@
   <table class="hover stack">
     <thead>
       <th>ID</th>
-      <th>Manufactuer</th>
+      <th>Manufacturer</th>
       <th>Type Name</th>
       <th>Type ID</th>
       <th>Style Name</th>
