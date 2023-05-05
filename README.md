@@ -7,6 +7,7 @@ This project is a full-stack web app that connects with Postgres database of job
 - [Design Decision Overview](#design-decision-overview)
 - [Programming Languages and Technology Choice](#programming-languages-and-technology-choice)
 - [Process for verifying the correctness of the program](#process-for-verifying-the-correctness-of-the-program)
+- [Features to implement with more time](#features-to-implement-with-more-time)
 
 ## Environment Setup
 
@@ -109,7 +110,12 @@ Separate given data into 6 tables
 
 Each record in `jobs` table store record id of mfr, type, style, color, and size as foreign keys that reference a unique record in `mfr`, `type`, `style`, `color`, and `size` tables. Since all columns in `jobs` table reference a record in another table, except for `ID` column, job records cannot have null value.
 
-This database design decision allows for consistent data update and insert as well as less storage since `jobs` table now only store record id integer value instead of literal strings like the denormalized version.
+This database design decision allows for
+
+- Consistent data update and insert
+- Less database storage since `jobs` table now only store record id integer value instead of literal strings like the denormalized version
+
+However, it's more expensive on database query because we have to join multiple tables to display desired table output.
 
 ### Server
 
@@ -166,4 +172,10 @@ Frontend features include
     - Search records by job ID, style ID, and color number and verify display results
     - Filter by manufacturer, type, style, color, and size and verify display results
 
+## Features to implement with more time
 
+- Currently, the app's search and filter logic is on the frontend because it was easier and faster to implement, not having to send data to the server, query database, and wait for response. With more data and more users accessing the app at the same time, I would filter and search on the server side, return data with limit, and implement pagination feature on the frontend. This way, we'll reduce web traffic and avoid writing the same logic again if we want to implement the same filter and search somewhere else.
+- Ability to add new and unique value for `mfr`, `type`, `style`, `color`, and `size` when creating or updating a job record. Currently, the app only allow for creating or updating job record with existing value in `mfr`, `type`, `style`, `color`, and `size`
+- For more complex application, the query would be abstracted out in a separate layer from controller files
+- More appropriate error code return for different situation
+- Add unit tests for reliability
