@@ -110,7 +110,7 @@ Separate given data into 6 tables
 - color
 - size
 
-Each record in `jobs` table store record id of mfr, type, style, color, and size as foreign keys that reference a unique record in `mfr`, `type`, `style`, `color`, and `size` tables. Since all columns in `jobs` table reference a record in another table, except for `ID` column, job records cannot have null value.
+Each record in `jobs` table store record id of `mfr`, `type`, `style`, `color`, and `size` as foreign keys that reference a unique record in `mfr`, `type`, `style`, `color`, and `size` tables. Since all columns in `jobs` table reference a record in another table, except for `ID` column, job records cannot have null value.
 
 This database design decision allows for
 
@@ -176,8 +176,8 @@ Frontend features include
 
 ## Features to implement with more time
 
-- Currently, the app's search and filter logic is on the frontend because it was easier and faster to implement, not having to send data to the server, query database, and wait for response. With more data and more users accessing the app at the same time, I would filter and search on the server side, return data with limit, and implement pagination feature on the frontend. This way, we'll reduce web traffic and avoid writing the same logic again if we want to implement the same filter and search somewhere else.
-- Ability to add new and unique value for `mfr`, `type`, `style`, `color`, and `size` when creating or updating a job record. Currently, the app only allow for creating or updating job record with existing value in `mfr`, `type`, `style`, `color`, and `size`
+- Currently, the app's search and filter logic is on the frontend because it was easier and faster to implement, not having to send data to the server, query database, and wait for response. With more data and more users accessing the app at the same time, I would filter and search on the server side, return data with limit, and implement pagination feature on the frontend. This way, we'll reduce web traffic and avoid writing the same logic again if we want to implement the same filter and search somewhere else
+- Ability to add new and unique value for `mfr`, `type`, `style`, `color`, and `size` when creating or updating a job record. Currently, the app only allow for creating or updating job record with existing value in `mfr`, `type`, `style`, `color`, and `size`. Because of the database design decision, it's also a bit more expensive to add or update job record because we have multiple data table to account for
 - For more complex application, the query would be abstracted out in a separate layer from controller files
 - More appropriate error code return for different situation
 - Nice success, warning, and error message callout when creating, updating, or deleting job record
