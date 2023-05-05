@@ -6,10 +6,10 @@ To run the program, you need Node.js, NPM (Node Package Manager), and PostgreSQL
 
 Install [Node.js](https://nodejs.org/en) if you don’t already have it installed. NPM will be included with Node.js installation. Verify if you have successfully installed Node.js and NPM by running the following command in your terminal or command prompt 
 
-```sql
-node --version
+```js
+$ node --version
 
-npm --version
+$ npm --version
 ```
 
 **********************PostgreSQL********************** 
@@ -44,7 +44,7 @@ Here’s an example of how it should look like in your terminal
 
 ************************Installation************************
 
-```sql
+```js
 $ git clone https://github.com/tinatrinh1012/crud-app.git
 
 // navigate to project directory 
