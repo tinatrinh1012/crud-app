@@ -55,30 +55,32 @@ Here’s an example of how it should look like in your terminal
 
 ## Install and Run the Program
 
-### Installation
+### Install project and setup database
 
 ```sh
 $ git clone https://github.com/tinatrinh1012/crud-app.git
 
-// navigate to project directory
+# navigate to project directory
 $ cd crud-app
 
-// navigate to server directory
+# navigate to server directory for database setup
 $ cd server
 
-// set up database for window OS
+# run crud_db.sql to set up database
+# if on mac OS
+$ psql postgres < crud_db.sql
+# if on window OS
 $ psql -U postgres -f .\crud_db.sql
 
-// set up database for mac OS
-$ psql
 
-// install packages in server directory
+# install node packages in server directory
 $ npm install
 
-// navigate to client directory from server directory  and install packages
+# navigate to client directory from server directory and install node packages
 $ cd ..
 $ cd client
 $ npm install
+
 ```
 
 ### Run the program
