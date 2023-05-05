@@ -38,7 +38,7 @@ Enter “\q” to quit psql shell.
 
 Here’s an example of how it should look like in your terminal 
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/27efd951-a26a-4695-bf28-e67a93ef7773/Untitled.png)
+<img width="819" alt="image" src="https://user-images.githubusercontent.com/68746212/236375231-9dfc728e-e6b4-4cd0-8a11-6534eeaf07ab.png">
 
 **********************Install and Run the program**********************
 
@@ -69,10 +69,11 @@ $ npm install
 
 To start the server, navigate to server directory and run “node server.js” 
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a50eb0f2-81ef-4f73-8805-08138e942812/Untitled.png)
+<img width="818" alt="image" src="https://user-images.githubusercontent.com/68746212/236375318-7e2a32e3-4a75-4427-8253-dbd533927266.png">
+
 
 Open another terminal or command prompt, navigate to the client directory and run “npm run serve”
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0c08a737-c1d8-4421-b7c8-ceb9f3de63af/Untitled.png)
+<img width="799" alt="image" src="https://user-images.githubusercontent.com/68746212/236375366-743d4a99-997d-44eb-9eee-a8c9400dba94.png">
 
 Go to [http://localhost:8080/](http://localhost:8080/) on your browser to open and run the app.
