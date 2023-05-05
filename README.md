@@ -4,6 +4,7 @@ This project is a full-stack web app that connects with Postgres database of job
 ## Table of Contents
 - [Environment Setup](#environment-setup)
 - [Install and Run the Program](#install-and-run-the-program)
+- [Design Decision Overview](#design-decision-overview)
 
 ## Environment Setup
 
