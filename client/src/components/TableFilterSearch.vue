@@ -56,10 +56,12 @@
     </div>
 
     <div class="grid-x">
-      <button type="submit" @click.prevent="filterHandler" class="button">Filter</button>
-    </div>
-    <div class="grid-x">
-      <button type="submit" @click.prevent="clearFilter" class="button">Clear filter</button>
+      <div class="medium-2 cell">
+        <button type="submit" @click.prevent="filterHandler" class="button">Filter</button>
+      </div>
+      <div class="medium-2 cell">
+        <button type="submit" @click.prevent="clearFilter" class="button">Clear filter</button>
+      </div>
     </div>
   </form>
 </template>
@@ -92,12 +94,22 @@ export default {
     }
   },
 
+  /*
+  The code is commented in this hook because I want users to click "Filter" button to filter and search for job records.
+  Uncomment the line of code inside this hook to allow for automatic filter and search result without having to click "Filter" button.
+  I chose to use the filter button because the button represents "perform an action", and it's more intuitive and more accessible.
+  */
+  updated() {
+    // this.filterHandler();
+  },
+
   methods: {
     async filterHandler() {
       const filteredJobs = this.jobs.filter(this.filterJobs);
       this.$emit('filter', filteredJobs);
     },
 
+    // note: search for job ID, style ID, and color number are filtered for exact match
     filterJobs(job) {
       if (this.filterMfrId !== null && job.mfr_record_id !== this.filterMfrId) {
         return false;
